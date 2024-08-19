@@ -20,15 +20,12 @@ namespace EntityFramework_02.Entities
 
         #region By Data Annotation 
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-
-        public int InstructorId { get; set; }
-        public int CourseId { get; set; }
-
         [Required]
         public string Evaluate { get; set; }
+
+        //[InverseProperty("course_Inst")]
+        //public ICollection<Instructor> instructor { get; set; } = new HashSet<Instructor>();
+
 
 
         #endregion

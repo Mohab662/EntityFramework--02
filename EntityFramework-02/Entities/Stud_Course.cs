@@ -18,18 +18,17 @@ namespace EntityFramework_02.Entities
 
         #endregion
 
-        #region By Data Annotation 
+        #region By Data Annotation And FluentApis
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-
-        public int StudentId { get; set; }
-        public int CourseId { get; set; }
 
         [Required]
         public double Grade { get; set; }
 
+        //[InverseProperty("Stud_Course")]
+        //public ICollection<Student> Students { get; set; } = new HashSet<Student>();
+
+        //[InverseProperty("Stud_Course")]
+        //public ICollection<Course> Course { get; set; } = new HashSet<Course>();
 
         #endregion
 

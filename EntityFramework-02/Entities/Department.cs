@@ -19,12 +19,11 @@ namespace EntityFramework_02.Entities
 
         #endregion
 
-        #region By Data Annotation 
+        #region By Data Annotation And FluentApis
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int DepartmentId { get; set; }
-
 
         [Required]
         [Column(TypeName = "varchar")]
@@ -34,6 +33,14 @@ namespace EntityFramework_02.Entities
 
         [DataType(DataType.DateTime)]
         public DateTime HiringDate { get; set; }
+
+        [InverseProperty("Department")]
+        public ICollection<Student> Students { get; set; } = new HashSet<Student>();
+
+        [InverseProperty("Department")]
+        public ICollection<Instructor> Instructor { get; set; } = new HashSet<Instructor>();
+
+
 
         #endregion
 

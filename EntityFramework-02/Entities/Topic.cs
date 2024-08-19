@@ -29,6 +29,9 @@ namespace EntityFramework_02.Entities
         [StringLength(10, MinimumLength = 3)]
         public string Name { get; set; }
 
+
+        //public Course Course { get; set; }
+
         #endregion
 
     }

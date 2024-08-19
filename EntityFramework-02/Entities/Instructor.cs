@@ -45,6 +45,12 @@ namespace EntityFramework_02.Entities
         [Required]
         public double HourRate { get; set; }
 
+        //[InverseProperty("instructor")]
+        //public Course_Inst course_Inst { get; set; }
+
+        [InverseProperty("Instructor")]
+        public Department Department { get; set; }
+
         #endregion
     }
 }

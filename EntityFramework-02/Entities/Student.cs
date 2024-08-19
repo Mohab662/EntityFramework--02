@@ -21,7 +21,7 @@ namespace EntityFramework_02.Entities
 
         #endregion
 
-        #region By Data Annotation 
+        #region By Data Annotation And FluentApis
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -44,7 +44,16 @@ namespace EntityFramework_02.Entities
         public int? Age { get; set; }
 
 
+        [InverseProperty("Students")]
+        public Department Department { get; set; }
+
+        //[InverseProperty("Students")]
+        //public ICollection<Stud_Course> Stud_Course { get; set; } = new HashSet<Stud_Course>();
+
+
         #endregion
+
+
     }
 
 }

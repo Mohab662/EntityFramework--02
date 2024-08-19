@@ -4,6 +4,7 @@ using EntityFramework_02.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EntityFramework_02.Migrations
 {
     [DbContext(typeof(SchoolDbContext))]
-    partial class SchoolDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240819213411_Fluent APIs--Configrations")]
+    partial class FluentAPIsConfigrations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,9 +49,16 @@ namespace EntityFramework_02.Migrations
                         .HasColumnType("varchar")
                         .HasAnnotation("StringLength", (50, 20));
 
+                    b.Property<int?>("Top_ID")
+                        .IsRequired()
+                        .HasColumnType("int");
+
                     b.HasKey("CourseId");
 
-                    b.ToTable("Course", "dbo");
+                    b.HasIndex("Top_ID")
+                        .IsUnique();
+
+                    b.ToTable("Courses", "dbo");
                 });
 
             modelBuilder.Entity("EntityFramework_02.Entities.Course_Inst", b =>
@@ -81,7 +91,7 @@ namespace EntityFramework_02.Migrations
 
                     b.HasKey("DepartmentId");
 
-                    b.ToTable("Department", "dbo");
+                    b.ToTable("Departments", "dbo");
                 });
 
             modelBuilder.Entity("EntityFramework_02.Entities.Instructor", b =>
@@ -120,7 +130,7 @@ namespace EntityFramework_02.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Instructor", "dbo");
+                    b.ToTable("Instructors", "dbo");
                 });
 
             modelBuilder.Entity("EntityFramework_02.Entities.Stud_Course", b =>
@@ -167,7 +177,7 @@ namespace EntityFramework_02.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Student", "dbo");
+                    b.ToTable("Students", "dbo");
                 });
 
             modelBuilder.Entity("EntityFramework_02.Entities.Topic", b =>
@@ -186,7 +196,18 @@ namespace EntityFramework_02.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Topic", "dbo");
+                    b.ToTable("Topics", "dbo");
+                });
+
+            modelBuilder.Entity("EntityFramework_02.Entities.Course", b =>
+                {
+                    b.HasOne("EntityFramework_02.Entities.Topic", "Topic")
+                        .WithOne("Course")
+                        .HasForeignKey("EntityFramework_02.Entities.Course", "Top_ID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Topic");
                 });
 
             modelBuilder.Entity("EntityFramework_02.Entities.Instructor", b =>
@@ -216,6 +237,12 @@ namespace EntityFramework_02.Migrations
                     b.Navigation("Instructor");
 
                     b.Navigation("Students");
+                });
+
+            modelBuilder.Entity("EntityFramework_02.Entities.Topic", b =>
+                {
+                    b.Navigation("Course")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

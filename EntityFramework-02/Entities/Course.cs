@@ -19,7 +19,7 @@ namespace EntityFramework_02.Entities
         //public int TopId { get; set; }
         #endregion
 
-        #region By Data Annotation 
+        #region By Data Annotation And FluentApis
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -36,6 +36,16 @@ namespace EntityFramework_02.Entities
 
         [StringLength(100,MinimumLength =20)]
         public string Description { get; set; }
+
+        //[InverseProperty("Course")]
+        //public ICollection<Stud_Course> Stud_Course { get; set; } = new HashSet<Stud_Course>();
+
+
+        //public Topic Topic { get; set; }
+
+
+        //[NotMapped]
+        //public int? Top_ID { get; set; }
 
         #endregion
 
