@@ -16,13 +16,13 @@ namespace EntityFramework_02.Context
         }
 
         #region Way(1)
-        //public DbSet<Course> Course { get; set; }
-        //public DbSet<Course_Inst> Course_Inst { get; set; }
-        //public DbSet<Student> Student { get; set; }
-        //public DbSet<Stud_Course> Stud_Course { get; set; }
-        //public DbSet<Department> Department { get; set; }
-        //public DbSet<Instructor> Instructor { get; set; }
-        //public DbSet<Topic> Topic { get; set; } 
+        public DbSet<Course> Course { get; set; }
+        public DbSet<Course_Inst> Course_Inst { get; set; }
+        public DbSet<Student> Student { get; set; }
+        public DbSet<Stud_Course> Stud_Course { get; set; }
+        public DbSet<Department> Department { get; set; }
+        public DbSet<Instructor> Instructor { get; set; }
+        public DbSet<Topic> Topic { get; set; }
         #endregion
 
 
