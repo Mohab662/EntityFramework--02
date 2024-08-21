@@ -21,9 +21,7 @@ namespace EntityFramework_02.Entities
 
         #region By Data Annotation And FluentApis
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int CourseId { get; set; }
+        public int CourseID { get; set; }
 
 
         [Required]
@@ -46,6 +44,13 @@ namespace EntityFramework_02.Entities
 
         //[NotMapped]
         //public int? Top_ID { get; set; }
+
+
+        public int TopicID { get; set; }
+        public Topic Topic { get; set; }
+
+        public ICollection<Stud_Course> StudentCourses { get; set; }
+        public ICollection<Course_Inst> CourseInstructors { get; set; }
 
         #endregion
 

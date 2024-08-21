@@ -22,6 +22,11 @@ namespace EntityFramework_02.Entities
 
         [Required]
         public string Evaluate { get; set; }
+        public int InstructorID { get; set; }
+        public Instructor Instructor { get; set; }
+
+        public int CourseID { get; set; }
+        public Course Course { get; set; }
 
         //[InverseProperty("course_Inst")]
         //public ICollection<Instructor> instructor { get; set; } = new HashSet<Instructor>();

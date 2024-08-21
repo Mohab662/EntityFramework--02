@@ -24,11 +24,12 @@ namespace EntityFramework_02.Entities
         [Required]
         public double Grade { get; set; }
 
-        //[InverseProperty("Stud_Course")]
-        //public ICollection<Student> Students { get; set; } = new HashSet<Student>();
 
-        //[InverseProperty("Stud_Course")]
-        //public ICollection<Course> Course { get; set; } = new HashSet<Course>();
+        public int StudentID { get; set; }
+        public Student Student { get; set; }
+
+        public int CourseID { get; set; }
+        public Course Course { get; set; }
 
         #endregion
 

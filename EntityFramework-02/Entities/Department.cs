@@ -21,9 +21,8 @@ namespace EntityFramework_02.Entities
 
         #region By Data Annotation And FluentApis
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int DepartmentId { get; set; }
+  
+        public int DepartmentID { get; set; }
 
         [Required]
         [Column(TypeName = "varchar")]
@@ -34,11 +33,11 @@ namespace EntityFramework_02.Entities
         [DataType(DataType.DateTime)]
         public DateTime HiringDate { get; set; }
 
-        [InverseProperty("Department")]
-        public ICollection<Student> Students { get; set; } = new HashSet<Student>();
+        public int? InstructorID { get; set; }
+        public Instructor Instructor { get; set; }
 
-        [InverseProperty("Department")]
-        public ICollection<Instructor> Instructor { get; set; } = new HashSet<Instructor>();
+        public ICollection<Student> Students { get; set; }
+
 
 
 

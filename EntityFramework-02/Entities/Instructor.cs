@@ -24,9 +24,7 @@ namespace EntityFramework_02.Entities
 
         #region By Data Annotation 
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int InstructorId { get; set; }
+        public int InstructorID { get; set; }
 
         [Required]
         [Column(TypeName = "varchar")]
@@ -45,11 +43,10 @@ namespace EntityFramework_02.Entities
         [Required]
         public double HourRate { get; set; }
 
-        //[InverseProperty("instructor")]
-        //public Course_Inst course_Inst { get; set; }
-
-        [InverseProperty("Instructor")]
+        public int? DepartmentID { get; set; }
         public Department Department { get; set; }
+
+        public ICollection<Course_Inst> CourseInstructors { get; set; }
 
         #endregion
     }

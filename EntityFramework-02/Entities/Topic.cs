@@ -20,17 +20,14 @@ namespace EntityFramework_02.Entities
 
         #region By Data Annotation 
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int ID { get; set; }
 
         [Required]
         [Column(TypeName = "varchar")]
         [StringLength(10, MinimumLength = 3)]
         public string Name { get; set; }
 
-
-        //public Course Course { get; set; }
+        public ICollection<Course> Courses { get; set; }
 
         #endregion
 

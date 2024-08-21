@@ -14,10 +14,9 @@ namespace EntityFramework_02.Configrations
         public void Configure(EntityTypeBuilder<Course> S)
         {
             S.ToTable("Course", "dbo");
-            S.HasKey(e => e.CourseId);
+            S.HasKey(e => e.CourseID);
 
-            S.Property(e => e.CourseId)
-             .UseIdentityColumn(10, 10);
+
 
             S.Property(e => e.Name)
              .IsRequired(true)
@@ -31,6 +30,9 @@ namespace EntityFramework_02.Configrations
 
             S.Property(e => e.Duration)
              .HasAnnotation("Range", (2, 16));
+
+            
+                
         }
     }
 }

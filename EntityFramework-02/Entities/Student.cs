@@ -23,9 +23,7 @@ namespace EntityFramework_02.Entities
 
         #region By Data Annotation And FluentApis
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int StudentId { get; set; }
+        public int StudentID { get; set; }
 
         [Required]
         [Column(TypeName ="varchar")]
@@ -44,11 +42,12 @@ namespace EntityFramework_02.Entities
         public int? Age { get; set; }
 
 
-        [InverseProperty("Students")]
+        public int DepartmentID { get; set; }
         public Department Department { get; set; }
 
-        //[InverseProperty("Students")]
-        //public ICollection<Stud_Course> Stud_Course { get; set; } = new HashSet<Stud_Course>();
+        public ICollection<Stud_Course> StudentCourses { get; set; }
+
+
 
 
         #endregion
