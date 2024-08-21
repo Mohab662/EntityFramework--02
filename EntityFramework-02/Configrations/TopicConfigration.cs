@@ -15,10 +15,9 @@ namespace EntityFramework_02.Configrations
         public void Configure(EntityTypeBuilder<Topic> S)
         {
             S.ToTable("Topic", "dbo");
-            S.HasKey(S=>S.Id);
+            S.HasKey(S => S.ID);
 
-            S.Property(e => e.Id)
-             .UseIdentityColumn(10, 10);
+
 
             S.Property(e => e.Name)
              .IsRequired(true)

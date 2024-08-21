@@ -14,10 +14,8 @@ namespace EntityFramework_02.Configrations
         public void Configure(EntityTypeBuilder<Student> S)
         {
             S.ToTable("Student", "dbo");
-            S.HasKey(S => S.StudentId);
+            S.HasKey(S => S.StudentID);
 
-            S.Property(e => e.StudentId)
-             .UseIdentityColumn(10, 10);
 
             S.Property(e => e.FName)
              .IsRequired(true)

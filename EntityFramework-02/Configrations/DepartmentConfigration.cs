@@ -14,10 +14,9 @@ namespace EntityFramework_02.Configrations
         public void Configure(EntityTypeBuilder<Department> S)
         {
             S.ToTable("Department", "dbo");
-            S.HasKey(e => e.DepartmentId);
+            S.HasKey(e => e.DepartmentID);
 
-            S.Property(e => e.DepartmentId)
-             .UseIdentityColumn(10, 10);
+
 
             S.Property(e => e.Name)
              .IsRequired(true)

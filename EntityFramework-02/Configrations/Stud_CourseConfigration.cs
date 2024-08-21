@@ -18,6 +18,8 @@ namespace EntityFramework_02.Configrations
 
             S.Property(e => e.Grade)
              .HasAnnotation("Range", (0, 100));
+
+            
         }
     }
 }

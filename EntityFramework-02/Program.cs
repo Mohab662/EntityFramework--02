@@ -47,7 +47,7 @@ namespace EntityFramework_02
 
                 #region Edit
 
-                dynamic Std = schoolDbContext.Topic.Where(T => T.Id == 10).Select(E => E.Name);
+                dynamic Std = schoolDbContext.Topic.Where(T => T.ID == 10).Select(E => E.Name);
                 Std = "ll";
 
                 schoolDbContext.SaveChanges();

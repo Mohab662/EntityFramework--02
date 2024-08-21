@@ -170,8 +170,6 @@ namespace EntityFramework_02.Context
             //            .HasForeignKey<Course>(e => e.Top_ID)
             //            .IsRequired();
 
-            
-
             modelBuilder.ApplyConfiguration(new DepartmentConfigration());
             modelBuilder.ApplyConfiguration(new StudentConfigration());
             modelBuilder.ApplyConfiguration(new TopicConfigration());
@@ -179,6 +177,43 @@ namespace EntityFramework_02.Context
             modelBuilder.ApplyConfiguration(new InstructorConfigration());
             modelBuilder.ApplyConfiguration(new Course_InstConfigration());
             modelBuilder.ApplyConfiguration(new Stud_CourseConfigration());
+
+            modelBuilder.Entity<Stud_Course>()
+             .HasKey(sc => new { sc.StudentID, sc.CourseID });
+
+
+            modelBuilder.Entity<Stud_Course>()
+                .HasOne(sc => sc.Student)
+                .WithMany(s => s.StudentCourses)
+                .HasForeignKey(sc => sc.StudentID);
+
+            modelBuilder.Entity<Stud_Course>()
+                .HasOne(sc => sc.Course)
+                .WithMany(c => c.StudentCourses)
+                .HasForeignKey(sc => sc.CourseID);
+
+
+            modelBuilder.Entity<Course_Inst>()
+                .HasKey(ci => new { ci.InstructorID, ci.CourseID });
+
+            modelBuilder.Entity<Course_Inst>()
+                .HasOne(ci => ci.Instructor)
+                .WithMany(i => i.CourseInstructors)
+                .HasForeignKey(ci => ci.InstructorID);
+
+
+            modelBuilder.Entity<Course_Inst>()
+                .HasOne(ci => ci.Course)
+                .WithMany(c => c.CourseInstructors)
+                .HasForeignKey(ci => ci.CourseID);
+
+
+            modelBuilder.Entity<Department>()
+                .HasOne(d => d.Instructor)
+                .WithOne(i => i.Department)
+                .HasForeignKey<Instructor>(i => i.DepartmentID);
+
+            
 
 
             base.OnModelCreating(modelBuilder);
